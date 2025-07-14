@@ -51,7 +51,11 @@ const chatSlice = createSlice({
         createdAt: Date.now(),
       };
       state.currentSession = newSession;
-      state.sessions.unshift(newSession);
+      // Add to beginning of sessions array if not already there
+      const existingIndex = state.sessions.findIndex(s => s.id === action.payload);
+      if (existingIndex === -1) {
+        state.sessions.unshift(newSession);
+      }
     },
     setPdfUploaded: (state, action: PayloadAction<{ fileName: string }>) => {
       if (state.currentSession) {
@@ -73,6 +77,13 @@ const chatSlice = createSlice({
         state.currentSession.messages = [];
       }
     },
+    deleteSession: (state, action: PayloadAction<string>) => {
+      const sessionId = action.payload;
+      state.sessions = state.sessions.filter(session => session.id !== sessionId);
+      if (state.currentSession?.id === sessionId) {
+        state.currentSession = state.sessions.length > 0 ? state.sessions[0] : null;
+      }
+    },
   },
 });
 
@@ -85,6 +96,7 @@ export const {
   setLoading,
   setError,
   clearMessages,
+  deleteSession,
 } = chatSlice.actions;
 
 export default chatSlice.reducer;

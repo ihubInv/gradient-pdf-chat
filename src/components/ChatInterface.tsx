@@ -6,6 +6,7 @@ import { useSendMessageMutation } from '../store/chatApi';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { useToast } from '../hooks/use-toast';
+import { InlinePdfUpload } from './InlinePdfUpload';
 
 export const ChatInterface: React.FC = () => {
   const [inputMessage, setInputMessage] = useState('');
@@ -144,6 +145,9 @@ export const ChatInterface: React.FC = () => {
 
       {/* Input Area */}
       <div className="border-t border-border/50 p-4">
+        <div className="flex gap-2 mb-3">
+          <InlinePdfUpload />
+        </div>
         <form onSubmit={handleSendMessage} className="flex gap-2">
           <Input
             value={inputMessage}
