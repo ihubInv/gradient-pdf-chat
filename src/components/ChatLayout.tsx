@@ -31,11 +31,11 @@ export const ChatLayout: React.FC = () => {
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100%-180px)]">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 h-[calc(100%-180px)]">
           {/* PDF Upload Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="glass rounded-2xl p-6 h-full border border-border/50">
-              <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          <div className="xl:col-span-1 order-2 xl:order-1">
+            <div className="glass rounded-2xl p-4 xl:p-6 h-full border border-border/50">
+              <h2 className="text-lg xl:text-xl font-semibold mb-4 flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-gradient-primary" />
                 Document Upload
               </h2>
@@ -43,9 +43,9 @@ export const ChatLayout: React.FC = () => {
               
               {/* Session Info */}
               {currentSession && (
-                <div className="mt-6 p-4 rounded-xl bg-muted/50 border border-border/30">
-                  <h3 className="font-medium mb-2">Current Session</h3>
-                  <div className="space-y-1 text-sm text-muted-foreground">
+                <div className="mt-4 xl:mt-6 p-3 xl:p-4 rounded-xl bg-muted/50 border border-border/30">
+                  <h3 className="font-medium mb-2 text-sm xl:text-base">Current Session</h3>
+                  <div className="space-y-1 text-xs xl:text-sm text-muted-foreground">
                     <p>Chat ID: {currentSession.id.slice(-8)}</p>
                     <p>Messages: {currentSession.messages.length}</p>
                     <p>
@@ -61,7 +61,7 @@ export const ChatLayout: React.FC = () => {
           </div>
 
           {/* Chat Interface */}
-          <div className="lg:col-span-2">
+          <div className="xl:col-span-2 order-1 xl:order-2">
             <div className="glass rounded-2xl h-full border border-border/50 overflow-hidden">
               <div className="h-full flex flex-col">
                 <div className="p-4 border-b border-border/50">

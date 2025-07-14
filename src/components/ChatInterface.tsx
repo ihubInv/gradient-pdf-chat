@@ -34,7 +34,7 @@ export const ChatInterface: React.FC = () => {
     if (!currentSession.pdfUploaded) {
       toast({
         title: "No PDF uploaded",
-        description: "Please upload a PDF file before starting the conversation.",
+        description: "Please upload a PDF file to start asking questions about it.",
         variant: "destructive",
       });
       return;
@@ -151,14 +151,14 @@ export const ChatInterface: React.FC = () => {
             placeholder={
               currentSession.pdfUploaded 
                 ? "Ask a question about your PDF..." 
-                : "Upload a PDF first..."
+                : "Type your message (upload PDF to ask about documents)..."
             }
-            disabled={!currentSession.pdfUploaded || isSending}
+            disabled={isSending}
             className="flex-1 glass border-border/50 focus:border-primary/50 focus:ring-primary/20"
           />
           <Button
             type="submit"
-            disabled={!inputMessage.trim() || !currentSession.pdfUploaded || isSending}
+            disabled={!inputMessage.trim() || isSending}
             className="btn-cosmic px-4"
           >
             <Send className="w-4 h-4" />
